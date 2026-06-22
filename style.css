@@ -20,8 +20,8 @@
 }
 .bienvenue {
     position: fixed;
-    left: 0px;
-    top: 230px;
+    left: 25px;
+    top: 200px;
 }
 body {
     position: relative;
