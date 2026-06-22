@@ -4,12 +4,14 @@
         rgba(173, 216, 230, 0.4),
         rgba(255, 255, 255, 0.2)
     );
+    background-color: black;
     position: fixed;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 250px;
     border-radius: 15px;
+    z-index: 2;
 }
 .logo {
     width: 200px;
@@ -17,18 +19,21 @@
     position: fixed;
     top: 15px;
     left: 25px;
+    z-index: 3;
 }
 .bienvenue {
     position: fixed;
-    left: 25px;
+    left: 60px;
     top: 200px;
+    z-index: 3;
 }
 body {
     background: linear-gradient(
-        to right,
-        rgba(173, 216, 230, 0.4),
-        rgba(255, 255, 255, 0.2)
+        to left,
+        rgba(255, 182, 193, 0.4),
+        rgba(221, 160, 221, 0.2)
     );
+    background-color: black;
     position: relative;
     color: rgba(255, 255, 255, 0.85);
     font-family: sans-serif;
