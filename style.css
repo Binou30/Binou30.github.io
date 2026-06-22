@@ -10,7 +10,6 @@
         #344A68
     );
     background-color: black;
-    border-radius: 15px;
     z-index: 2;
 }
 .logo {
@@ -50,6 +49,9 @@ body {
 }
 .txts {
     color: #E4E4E4;
+}
+.liens {
+    color: #6F7E86;
 }
 footer {
     padding: 10px;
