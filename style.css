@@ -1,7 +1,66 @@
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+}
+.rose {
+    background: rgba(255, 182, 193, 0.6);
+    position: absolute;
+    top: 75px;
+    left: 100px;
+}
+.bleu {
+    background: rgba(173, 216, 230, 0.6);
+    position: absolute;
+    top: 200px;
+    right: 150px;
+}
+.violet {
+    background: rgba(221, 160, 221, 0.6);
+    position: absolute;
+    bottom: 60px;
+    left: 250px;
+}
+.vert {
+    background: rgba(180, 240, 200, 0.6);
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+}
+.rectangle-gauche {
+    background: linear-gradient(
+        to right,
+        rgba(173, 216, 230, 0.4),
+        rgba(255, 255, 255, 0.2)
+    );
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 250px;
+    border-radius: 15px;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 15px;
+    left: 25px;
+}
+.bienvenue {
+    position: relative;
+    left: 0px;
+    top: 230px;
+}
 body {
+    position: relative;
     background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: sans-serif;
+    margin-left: 260px;
 }
 footer {
     text-align: center;
