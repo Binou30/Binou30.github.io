@@ -1,46 +1,71 @@
 .rectangle-gauche {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
     background: linear-gradient(
         to right,
         rgba(173, 216, 230, 0.4),
         rgba(255, 255, 255, 0.2)
     );
     background-color: black;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 250px;
     border-radius: 15px;
     z-index: 2;
 }
 .logo {
-    width: 200px;
-    height: 200px;
     position: fixed;
     top: 15px;
     left: 25px;
+    width: 200px;
+    height: 200px;
     z-index: 3;
 }
-.bienvenue {
+.binou30 {
     position: fixed;
-    left: 60px;
     top: 200px;
+    left: 60px;
+    color: rgba(245, 232, 208, 0.851);
     z-index: 3;
+}
+.presentation {
+    position: fixed;
+    color: rgb(199, 189, 169);
+    top: 260px;
+    left: 20px;
+    z-index: 3;
+    line-break: auto;
+    text-align: center;
 }
 body {
+    position: relative;
+    margin-left: 260px;
     background: linear-gradient(
         to left,
         rgba(255, 182, 193, 0.4),
         rgba(221, 160, 221, 0.2)
     );
     background-color: black;
-    position: relative;
-    color: rgba(255, 255, 255, 0.85);
     font-family: sans-serif;
-    margin-left: 260px;
+}
+.txts {
+    color: rgba(245, 232, 208, 0.85);
 }
 footer {
-    text-align: center;
     padding: 10px;
-    color: white;
+    color: rgba(245, 232, 208, 0.85);
+    text-align: center;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 182, 193, 0.4);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 182, 193, 0.2);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 182, 193, 0.4);
 }
