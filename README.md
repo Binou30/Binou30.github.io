@@ -3,6 +3,6 @@ Dans ce portfolio ,vous trouverez un peu toutes mes compétences en programmatio
 
 Bonne exploration!
 
-SITE EN MAINTENANCE... IL NE CONTIENT RIEN
+SITE EN MAINTENANCE
 
 NE PAS UTILISER SUR TÉLÉPHONE !
