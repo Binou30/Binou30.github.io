@@ -24,8 +24,12 @@
     top: 200px;
 }
 body {
+    background: linear-gradient(
+        to right,
+        rgba(173, 216, 230, 0.4),
+        rgba(255, 255, 255, 0.2)
+    );
     position: relative;
-    background-color: black;
     color: rgba(255, 255, 255, 0.85);
     font-family: sans-serif;
     margin-left: 260px;
