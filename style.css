@@ -35,7 +35,7 @@
 
 .button-mes-projets:active {
     transform: scale(0.95);
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(221, 179, 251, 0.4);
     opacity: 0.8;
 }
 
@@ -74,7 +74,7 @@
 
 .button-langages:active {
     transform: scale(0.95);
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(221, 179, 251, 0.4);
     opacity: 0.8;
 }
 
@@ -115,7 +115,7 @@
 
 .button-à-propos:active {
     transform: scale(0.95);
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(221, 179, 251, 0.4);
     opacity: 0.8;
 }
 
@@ -154,7 +154,7 @@
 
 .button-liens:active {
     transform: scale(0.95);
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(221, 179, 251, 0.4);
     opacity: 0.8;
 }
 
