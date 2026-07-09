@@ -1,198 +1,239 @@
 /* =========================================================
-   Variante mixée (moyenne de style.css / style2.css)
-   - Navbars : mauve rosé uni, rgba(210, 179, 198, 0.3)
-   - Boutons : normal violet-nuit / hover mauve moyen / actif rose-mauve clair
+   Version RESPONSIVE — calibrée sur une page de référence 1292 x 898
+   Principe : chaque valeur horizontale (largeurs, positions, espacements
+   gauche/droite, bordures, arrondis, ombres) est exprimée en vw ; chaque
+   valeur verticale (hauteurs, positions, espacements haut/bas) en vh.
+   Pas de clamp() : proportionnalité stricte, tout suit linéairement la
+   largeur et/ou la hauteur de l'écran.
+
+   CORRECTIFS (3e passe) :
+   - Logo légèrement agrandi : 24.46vmin -> 27vmin.
+   - Ancrage vertical unique : --logo-center = centre vertical exact du
+     logo (top du logo + demi-hauteur du logo). Navbars, boutons et
+     séparateurs "-.-" utilisent tous ce même repère avec
+     transform: translateY(-50%) (ou translate(-50%,-50%) pour les
+     séparateurs, déjà centrés horizontalement). Comme translateY(-50%)
+     se base sur la propre hauteur de l'élément, le centrage vertical
+     reste EXACT quelle que soit la taille de police/du bouton/de la
+     navbar — plus aucun décalage possible quand la largeur seule change.
+   - Hauteur des navbars passée de 9vh à 9vmin : sur un écran peu large
+     (largeur < hauteur), vmin suit la largeur, donc la navbar réduit
+     aussi sa hauteur quand l'écran devient étroit, tout en restant
+     alignée sur le centre du logo grâce à --logo-center.
+   - Séparateurs : police recalée à 1.935vw, top passé sur --logo-center.
    ========================================================= */
+
+:root {
+    /* top du logo (1vh) + demi-hauteur du logo (27vmin / 2 = 13.5vmin) */
+    --logo-center: calc(1vh + 13.5vmin);
+}
 
 .navbar-gauche {
     position: fixed;
     width: 35%;
-    height: clamp(60px, 9vh, 85px);
+    height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
-    border: 1px solid rgba(245, 238, 234, 0.1);
-    top: 8.35vh;
-    transform: translateX(-5%);
+    border: 0.077vw solid rgba(245, 238, 234, 0.1);
+    top: var(--logo-center);
+    transform: translate(-5%, -50%);
     left: 5%;
-    border-radius: 15px;
+    border-radius: 1.161vw;
 }
 
 .button-mes-projets {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 6.2%;
+    transform: translateY(-50%);
 }
 
 .button-mes-projets:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-mes-projets:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .point-entre-projets-langages {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9vmin;
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: 1.935vw;
     color: #afaaa7;
-    top: 7.9vh;
+    top: calc(var(--logo-center) - 0.2vh);
     left: 20.75%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    margin: 0;
 }
 
 .button-langages {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 24.8%;
+    transform: translateY(-50%);
 }
 
 .button-langages:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-langages:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .navbar-droite {
     position: fixed;
     width: 35%;
-    height: clamp(60px, 9vh, 85px);
+    height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
-    border: 1px solid rgba(245, 238, 234, 0.1);
-    top: 8.35vh;
-    transform: translateX(-95%);
+    border: 0.077vw solid rgba(245, 238, 234, 0.1);
+    top: var(--logo-center);
+    transform: translate(-95%, -50%);
     left: 95%;
-    border-radius: 15px;
+    border-radius: 1.161vw;
 }
 
 .button-à-propos {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 64.2%;
+    transform: translateY(-50%);
 }
 
 .button-à-propos:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-à-propos:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .point-entre-à-propos-liens {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9vmin;
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: 1.935vw;
     color: #afaaa7;
-    top: 7.9vh;
+    top: calc(var(--logo-center) - 0.2vh);
     left: 77.5%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    margin: 0;
 }
 
 .button-liens {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 82%;
+    transform: translateY(-50%);
 }
 
 .button-liens:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-liens:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .logo {
     position: fixed;
-    width: clamp(120px, 17vw, 225px);
-    height: clamp(120px, 17vw, 225px);
+    width: 27vmin;
+    height: 27vmin;
     top: 1vh;
     left: 50%;
     transform: translateX(-50%) scale(1);
     transform-origin: center center;
-    filter: drop-shadow(0 0 10px rgba(245, 238, 234, 0.4));
+    filter: drop-shadow(0 0 0.774vw rgba(245, 238, 234, 0.4));
     transition: filter 0.3s ease-in-out, transform 0.2s ease-out;
     cursor: pointer;
 }
 
 .logo:hover {
-    filter: drop-shadow(0 0 15px rgba(245, 238, 234, 0.6));
+    filter: drop-shadow(0 0 1.161vw rgba(245, 238, 234, 0.6));
 }
 
 .logo:active {
-    filter: drop-shadow(0 0 20px #CCB1AB);
+    filter: drop-shadow(0 0 1.548vw #CCB1AB);
     transform: translateX(-50%) scale(0.97);
 }
 
 .salut-binou30 {
     position: absolute;
     left: 50%;
-    top: 31.5vh;
-    transform: translateX(-50%);
+    top: 32.94vh;
+    transform: translate(-50%, -50%);
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 30px);
+    font-size: 2vw;
+    line-height: 1;
     white-space: nowrap;
 }
 
@@ -206,7 +247,7 @@
     vertical-align: bottom;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid #F5EEEA;
+    border-right: 0.232vw solid #F5EEEA;
     color: #F5EEEA;
     animation:
         typing 2s steps(8) 1 forwards,
@@ -230,7 +271,7 @@
     top: 38vh;
     background-color: #CCB1AB;
     width: 90%;
-    height: 2px;
+    height: 0.223vh;
     border: none;
     transform-origin: center;
     transform: translateX(-50%) scaleX(0);
@@ -250,10 +291,10 @@
 
 @keyframes subtleFloat {
     0%, 100% {
-        transform: translateX(-50%) translateY(0px) scale(1);
+        transform: translateX(-50%) translateY(0) scale(1);
     }
     50% {
-        transform: translateX(-50%) translateY(-8px) scale(1);
+        transform: translateX(-50%) translateY(-0.891vh) scale(1);
     }
 }
 
@@ -271,7 +312,7 @@ body {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(1.671vh);
     }
     100% {
         opacity: 1;
