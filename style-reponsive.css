@@ -1,32 +1,52 @@
 /* =========================================================
-   Variante mixée (moyenne de style.css / style2.css)
-   - Navbars : mauve rosé uni, rgba(210, 179, 198, 0.3)
-   - Boutons : normal violet-nuit / hover mauve moyen / actif rose-mauve clair
+   Version RESPONSIVE — calibrée sur une page de référence 1292 x 898
+   Principe : chaque valeur horizontale (largeurs, positions, espacements
+   gauche/droite, bordures, arrondis, ombres) est exprimée en vw ; chaque
+   valeur verticale (hauteurs, positions, espacements haut/bas) en vh.
+   Les clamp() min/max ont été retirés pour une proportionnalité stricte :
+   tout grandit/rétrécit linéairement avec la largeur et/ou la hauteur
+   de l'écran, exactement comme sur la page 1292x898 d'origine.
+   Seul le logo utilise vmin (au lieu de vw) pour rester parfaitement
+   carré tout en réagissant aussi bien à la largeur qu'à la hauteur.
+
+   CORRECTIFS (2e passe) :
+   - Séparateurs "-.-" et texte de bienvenue : ces éléments plaçaient
+     leur HAUT de boîte à une position en vh, alors que leur propre
+     hauteur dépendait du font-size en vw. Résultat : en réduisant la
+     largeur, le texte rétrécissait et semblait "remonter". Fix : passage
+     en line-height:1 + transform: translate(-50%, -50%), qui ancre
+     toujours le CENTRE du texte à la position top (vh), quelle que soit
+     la taille de police. Le top a été recalculé pour retomber pile sur
+     l'emplacement d'origine à 1292x898.
+   - Séparateurs "-.-" : leur clamp() d'origine plafonnait la police à
+     25px, alors que 2vw à 1292px de large donne 25.84px (donc légèrement
+     trop gros une fois le clamp retiré). Coefficient recalé à 1.935vw
+     pour retomber exactement sur 25px à la largeur de référence.
    ========================================================= */
 
 .navbar-gauche {
     position: fixed;
     width: 35%;
-    height: clamp(60px, 9vh, 85px);
+    height: 9vh;
     background-color: rgba(190, 179, 218, 0.3);
-    border: 1px solid rgba(245, 238, 234, 0.1);
+    border: 0.077vw solid rgba(245, 238, 234, 0.1);
     top: 8.35vh;
     transform: translateX(-5%);
     left: 5%;
-    border-radius: 15px;
+    border-radius: 1.161vw;
 }
 
 .button-mes-projets {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
     top: 10.3vh;
     left: 6.2%;
@@ -36,7 +56,7 @@
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(-0.111vh);
 }
 
 .button-mes-projets:active {
@@ -48,24 +68,25 @@
 .point-entre-projets-langages {
     position: fixed;
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: 1.935vw;
+    line-height: 1;
     color: #afaaa7;
-    top: 7.9vh;
+    top: 9.29vh;
     left: 20.75%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 }
 
 .button-langages {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
     top: 10.3vh;
     left: 24.8%;
@@ -75,7 +96,7 @@
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(-0.111vh);
 }
 
 .button-langages:active {
@@ -87,26 +108,26 @@
 .navbar-droite {
     position: fixed;
     width: 35%;
-    height: clamp(60px, 9vh, 85px);
+    height: 9vh;
     background-color: rgba(190, 179, 218, 0.3);
-    border: 1px solid rgba(245, 238, 234, 0.1);
+    border: 0.077vw solid rgba(245, 238, 234, 0.1);
     top: 8.35vh;
     transform: translateX(-95%);
     left: 95%;
-    border-radius: 15px;
+    border-radius: 1.161vw;
 }
 
 .button-à-propos {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
     top: 10.3vh;
     left: 64.2%;
@@ -116,7 +137,7 @@
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(-0.111vh);
 }
 
 .button-à-propos:active {
@@ -128,24 +149,25 @@
 .point-entre-à-propos-liens {
     position: fixed;
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: 1.935vw;
+    line-height: 1;
     color: #afaaa7;
-    top: 7.9vh;
+    top: 9.29vh;
     left: 77.5%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 }
 
 .button-liens {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 1px solid rgba(245, 238, 234, 0.12);
+    border: 0.077vw solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: clamp(12px, 1vw, 15px);
+    font-size: 1vw;
     font-weight: bold;
-    padding: clamp(10px, 1.5vh, 15px) clamp(20px, 2vw, 30px);
+    padding: 1.5vh 2vw;
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 12px;
+    border-radius: 0.929vw;
     transition: all 0.3s ease;
     top: 10.3vh;
     left: 82%;
@@ -155,7 +177,7 @@
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-1px);
+    transform: translateY(-0.111vh);
 }
 
 .button-liens:active {
@@ -166,33 +188,34 @@
 
 .logo {
     position: fixed;
-    width: clamp(120px, 17vw, 225px);
-    height: clamp(120px, 17vw, 225px);
+    width: 24.46vmin;
+    height: 24.46vmin;
     top: 1vh;
     left: 50%;
     transform: translateX(-50%) scale(1);
     transform-origin: center center;
-    filter: drop-shadow(0 0 10px rgba(245, 238, 234, 0.4));
+    filter: drop-shadow(0 0 0.774vw rgba(245, 238, 234, 0.4));
     transition: filter 0.3s ease-in-out, transform 0.2s ease-out;
     cursor: pointer;
 }
 
 .logo:hover {
-    filter: drop-shadow(0 0 15px rgba(245, 238, 234, 0.6));
+    filter: drop-shadow(0 0 1.161vw rgba(245, 238, 234, 0.6));
 }
 
 .logo:active {
-    filter: drop-shadow(0 0 20px #CCB1AB);
+    filter: drop-shadow(0 0 1.548vw #CCB1AB);
     transform: translateX(-50%) scale(0.97);
 }
 
 .salut-binou30 {
     position: absolute;
     left: 50%;
-    top: 31.5vh;
-    transform: translateX(-50%);
+    top: 32.94vh;
+    transform: translate(-50%, -50%);
     font-family: monospace;
-    font-size: clamp(18px, 2vw, 30px);
+    font-size: 2vw;
+    line-height: 1;
     white-space: nowrap;
 }
 
@@ -206,7 +229,7 @@
     vertical-align: bottom;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid #F5EEEA;
+    border-right: 0.232vw solid #F5EEEA;
     color: #F5EEEA;
     animation:
         typing 2s steps(8) 1 forwards,
@@ -230,7 +253,7 @@
     top: 38vh;
     background-color: #CCB1AB;
     width: 90%;
-    height: 2px;
+    height: 0.223vh;
     border: none;
     transform-origin: center;
     transform: translateX(-50%) scaleX(0);
@@ -250,10 +273,10 @@
 
 @keyframes subtleFloat {
     0%, 100% {
-        transform: translateX(-50%) translateY(0px) scale(1);
+        transform: translateX(-50%) translateY(0) scale(1);
     }
     50% {
-        transform: translateX(-50%) translateY(-8px) scale(1);
+        transform: translateX(-50%) translateY(-0.891vh) scale(1);
     }
 }
 
@@ -271,7 +294,7 @@ body {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(1.671vh);
     }
     100% {
         opacity: 1;
