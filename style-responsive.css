@@ -3,35 +3,39 @@
    Principe : chaque valeur horizontale (largeurs, positions, espacements
    gauche/droite, bordures, arrondis, ombres) est exprimée en vw ; chaque
    valeur verticale (hauteurs, positions, espacements haut/bas) en vh.
-   Les clamp() min/max ont été retirés pour une proportionnalité stricte :
-   tout grandit/rétrécit linéairement avec la largeur et/ou la hauteur
-   de l'écran, exactement comme sur la page 1292x898 d'origine.
-   Seul le logo utilise vmin (au lieu de vw) pour rester parfaitement
-   carré tout en réagissant aussi bien à la largeur qu'à la hauteur.
+   Pas de clamp() : proportionnalité stricte, tout suit linéairement la
+   largeur et/ou la hauteur de l'écran.
 
-   CORRECTIFS (2e passe) :
-   - Séparateurs "-.-" et texte de bienvenue : ces éléments plaçaient
-     leur HAUT de boîte à une position en vh, alors que leur propre
-     hauteur dépendait du font-size en vw. Résultat : en réduisant la
-     largeur, le texte rétrécissait et semblait "remonter". Fix : passage
-     en line-height:1 + transform: translate(-50%, -50%), qui ancre
-     toujours le CENTRE du texte à la position top (vh), quelle que soit
-     la taille de police. Le top a été recalculé pour retomber pile sur
-     l'emplacement d'origine à 1292x898.
-   - Séparateurs "-.-" : leur clamp() d'origine plafonnait la police à
-     25px, alors que 2vw à 1292px de large donne 25.84px (donc légèrement
-     trop gros une fois le clamp retiré). Coefficient recalé à 1.935vw
-     pour retomber exactement sur 25px à la largeur de référence.
+   CORRECTIFS (3e passe) :
+   - Logo légèrement agrandi : 24.46vmin -> 27vmin.
+   - Ancrage vertical unique : --logo-center = centre vertical exact du
+     logo (top du logo + demi-hauteur du logo). Navbars, boutons et
+     séparateurs "-.-" utilisent tous ce même repère avec
+     transform: translateY(-50%) (ou translate(-50%,-50%) pour les
+     séparateurs, déjà centrés horizontalement). Comme translateY(-50%)
+     se base sur la propre hauteur de l'élément, le centrage vertical
+     reste EXACT quelle que soit la taille de police/du bouton/de la
+     navbar — plus aucun décalage possible quand la largeur seule change.
+   - Hauteur des navbars passée de 9vh à 9vmin : sur un écran peu large
+     (largeur < hauteur), vmin suit la largeur, donc la navbar réduit
+     aussi sa hauteur quand l'écran devient étroit, tout en restant
+     alignée sur le centre du logo grâce à --logo-center.
+   - Séparateurs : police recalée à 1.935vw, top passé sur --logo-center.
    ========================================================= */
+
+:root {
+    /* top du logo (1vh) + demi-hauteur du logo (27vmin / 2 = 13.5vmin) */
+    --logo-center: calc(1vh + 13.5vmin);
+}
 
 .navbar-gauche {
     position: fixed;
     width: 35%;
-    height: 9vh;
+    height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
     border: 0.077vw solid rgba(245, 238, 234, 0.1);
-    top: 8.35vh;
-    transform: translateX(-5%);
+    top: var(--logo-center);
+    transform: translate(-5%, -50%);
     left: 5%;
     border-radius: 1.161vw;
 }
@@ -48,32 +52,38 @@
     color: #F5EEEA;
     border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 6.2%;
+    transform: translateY(-50%);
 }
 
 .button-mes-projets:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-0.111vh);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-mes-projets:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .point-entre-projets-langages {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9vmin;
     font-family: monospace;
     font-size: 1.935vw;
-    line-height: 1;
     color: #afaaa7;
-    top: 9.29vh;
+    top: calc(var(--logo-center) - 0.2vh);
     left: 20.75%;
     transform: translate(-50%, -50%);
+    line-height: 1;
+    margin: 0;
 }
 
 .button-langages {
@@ -88,31 +98,32 @@
     color: #F5EEEA;
     border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 24.8%;
+    transform: translateY(-50%);
 }
 
 .button-langages:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-0.111vh);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-langages:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .navbar-droite {
     position: fixed;
     width: 35%;
-    height: 9vh;
+    height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
     border: 0.077vw solid rgba(245, 238, 234, 0.1);
-    top: 8.35vh;
-    transform: translateX(-95%);
+    top: var(--logo-center);
+    transform: translate(-95%, -50%);
     left: 95%;
     border-radius: 1.161vw;
 }
@@ -129,32 +140,38 @@
     color: #F5EEEA;
     border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 64.2%;
+    transform: translateY(-50%);
 }
 
 .button-à-propos:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-0.111vh);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-à-propos:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .point-entre-à-propos-liens {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9vmin;
     font-family: monospace;
     font-size: 1.935vw;
-    line-height: 1;
     color: #afaaa7;
-    top: 9.29vh;
+    top: calc(var(--logo-center) - 0.2vh);
     left: 77.5%;
     transform: translate(-50%, -50%);
+    line-height: 1;
+    margin: 0;
 }
 
 .button-liens {
@@ -169,27 +186,28 @@
     color: #F5EEEA;
     border-radius: 0.929vw;
     transition: all 0.3s ease;
-    top: 10.3vh;
+    top: var(--logo-center);
     left: 82%;
+    transform: translateY(-50%);
 }
 
 .button-liens:hover {
     color: #F5EEEA;
     background-color: rgba(92, 86, 155, 0.65);
     border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(-0.111vh);
+    transform: translateY(calc(-50% - 0.111vh));
 }
 
 .button-liens:active {
-    transform: scale(0.95);
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .logo {
     position: fixed;
-    width: 24.46vmin;
-    height: 24.46vmin;
+    width: 27vmin;
+    height: 27vmin;
     top: 1vh;
     left: 50%;
     transform: translateX(-50%) scale(1);
