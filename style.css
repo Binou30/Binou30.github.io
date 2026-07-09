@@ -22,7 +22,7 @@
     color: #F5EEEA;
     border-radius: 12px;
     transition: all 0.3s ease;
-    top: 10.6vh;
+    top: 10.3vh;
     left: 6.2%;
 }
 
@@ -44,7 +44,7 @@
     font-family: monospace;
     font-size: clamp(18px, 2vw, 25px);
     color: #afaaa7;
-    top: 8.2vh;
+    top: 7.9vh;
     left: 20.75%;
     transform: translateX(-50%);
 }
@@ -61,7 +61,7 @@
     color: #F5EEEA;
     border-radius: 12px;
     transition: all 0.3s ease;
-    top: 10.6vh;
+    top: 10.3vh;
     left: 24.8%;
 }
 
@@ -102,7 +102,7 @@
     color: #F5EEEA;
     border-radius: 12px;
     transition: all 0.3s ease;
-    top: 10.6vh;
+    top: 10.3vh;
     left: 64.2%;
 }
 
@@ -124,7 +124,7 @@
     font-family: monospace;
     font-size: clamp(18px, 2vw, 25px);
     color: #afaaa7;
-    top: 8.2vh;
+    top: 7.9vh;
     left: 77.5%;
     transform: translateX(-50%);
 }
@@ -141,7 +141,7 @@
     color: #F5EEEA;
     border-radius: 12px;
     transition: all 0.3s ease;
-    top: 10.6vh;
+    top: 10.3vh;
     left: 82%;
 }
 
