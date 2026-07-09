@@ -12,8 +12,8 @@
 
 .button-mes-projets {
     position: fixed;
-    background: none;
-    border: none;
+    background: rgba(30, 40, 55, 0.3);
+    border: 1px solid rgba(245, 238, 234, 0.1);
     font-family: monospace;
     font-size: clamp(12px, 1vw, 15px);
     font-weight: bold;
@@ -27,16 +27,16 @@
 }
 
 .button-mes-projets:hover {
-    color: #1A1B2F;
-    background-color: rgba(221, 179, 251, 0.4);
-    box-shadow: 0 0 15px rgba(204, 177, 171, 0.5);
+    color: #F5EEEA;
+    background-color: rgba(45, 65, 90, 0.65);
     transform: translateY(-1px);
+    border-color: rgba(245, 238, 234, 0.1);
 }
 
 .button-mes-projets:active {
     transform: scale(0.95);
-    background-color: rgba(221, 179, 251, 0.4);
-    opacity: 0.8;
+    background-color: rgba(40, 55, 75, 0.9);
+    opacity: 1;
 }
 
 .point-entre-projets-langages {
@@ -51,8 +51,8 @@
 
 .button-langages {
     position: fixed;
-    background: none;
-    border: none;
+    background: rgba(30, 40, 55, 0.3);
+    border: 1px solid rgba(245, 238, 234, 0.1);
     font-family: monospace;
     font-size: clamp(12px, 1vw, 15px);
     font-weight: bold;
@@ -66,16 +66,16 @@
 }
 
 .button-langages:hover {
-    color: #1A1B2F;
-    background-color: rgba(221, 179, 251, 0.4);
-    box-shadow: 0 0 15px rgba(204, 177, 171, 0.5);
+    color: #F5EEEA;
+    background-color: rgba(45, 65, 90, 0.65);
     transform: translateY(-1px);
+    border-color: rgba(245, 238, 234, 0.1);
 }
 
 .button-langages:active {
     transform: scale(0.95);
-    background-color: rgba(221, 179, 251, 0.4);
-    opacity: 0.8;
+    background-color: rgba(40, 55, 75, 0.9);
+    opacity: 1;
 }
 
 .navbar-droite {
@@ -92,8 +92,8 @@
 
 .button-à-propos {
     position: fixed;
-    background: none;
-    border: none;
+    background: rgba(30, 40, 55, 0.3);
+    border: 1px solid rgba(245, 238, 234, 0.1);
     font-family: monospace;
     font-size: clamp(12px, 1vw, 15px);
     font-weight: bold;
@@ -107,16 +107,16 @@
 }
 
 .button-à-propos:hover {
-    color: #1A1B2F;
-    background-color: rgba(221, 179, 251, 0.4);
-    box-shadow: 0 0 15px rgba(204, 177, 171, 0.5);
+    color: #F5EEEA;
+    background-color: rgba(45, 65, 90, 0.65);
     transform: translateY(-1px);
+    border-color: rgba(245, 238, 234, 0.1);
 }
 
 .button-à-propos:active {
     transform: scale(0.95);
-    background-color: rgba(221, 179, 251, 0.4);
-    opacity: 0.8;
+    background-color: rgba(40, 55, 75, 0.9);
+    opacity: 1;
 }
 
 .point-entre-à-propos-liens {
@@ -131,8 +131,8 @@
 
 .button-liens {
     position: fixed;
-    background: none;
-    border: none;
+    background: rgba(30, 40, 55, 0.3);
+    border: 1px solid rgba(245, 238, 234, 0.1);
     font-family: monospace;
     font-size: clamp(12px, 1vw, 15px);
     font-weight: bold;
@@ -146,16 +146,16 @@
 }
 
 .button-liens:hover {
-    color: #1A1B2F;
-    background-color: rgba(221, 179, 251, 0.4);
-    box-shadow: 0 0 15px rgba(204, 177, 171, 0.5);
+    color: #F5EEEA;
+    background-color: rgba(45, 65, 90, 0.65);
     transform: translateY(-1px);
+    border-color: rgba(245, 238, 234, 0.1);
 }
 
 .button-liens:active {
     transform: scale(0.95);
-    background-color: rgba(221, 179, 251, 0.4);
-    opacity: 0.8;
+    background-color: rgba(40, 55, 75, 0.9);
+    opacity: 1;
 }
 
 .logo {
@@ -168,10 +168,11 @@
     transform-origin: center center;
     filter: drop-shadow(0 0 10px rgba(245, 238, 234, 0.4));
     transition: filter 0.3s ease-in-out, transform 0.2s ease-out;
+    cursor: pointer;
 }
 
 .logo:hover {
-    filter: drop-shadow(0 0 25px rgba(245, 238, 234, 0.9));
+    filter: drop-shadow(0 0 15px rgba(245, 238, 234, 0.6));
 }
 
 .logo:active {
@@ -182,7 +183,7 @@
 .salut-binou30 {
     position: absolute;
     left: 50%;
-    top: 31vh;
+    top: 28vh;
     transform: translateX(-50%);
     font-family: monospace;
     font-size: clamp(18px, 2vw, 30px);
@@ -220,7 +221,7 @@
 .bottom-binou30 {
     position: absolute;
     left: 50%;
-    top: 37vh;
+    top: 34vh;
     background-color: #CCB1AB;
     width: 90%;
     height: 2px;
@@ -233,9 +234,20 @@
 @keyframes tracerLigne {
     0% {
         transform: translateX(-50%) scaleX(0);
+        opacity: 0;
     }
     100% {
         transform: translateX(-50%) scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes subtleFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-8px) scale(1);
     }
 }
 
