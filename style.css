@@ -183,7 +183,7 @@
 .salut-binou30 {
     position: absolute;
     left: 50%;
-    top: 28vh;
+    top: 31.5vh;
     transform: translateX(-50%);
     font-family: monospace;
     font-size: clamp(18px, 2vw, 30px);
@@ -221,7 +221,7 @@
 .bottom-binou30 {
     position: absolute;
     left: 50%;
-    top: 34vh;
+    top: 38vh;
     background-color: #CCB1AB;
     width: 90%;
     height: 2px;
