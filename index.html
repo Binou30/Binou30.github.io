@@ -10,14 +10,29 @@
     </head>
     <body>
         <div class="navbar-gauche"></div>
-        <button class="button-mes-projets">Mes projets</button>
-        <p class="point-entre-projets-langages">-·-</p>
-        <button class="button-langages">Langages</button>
-        <img class="logo" src="favicon.png">
         <div class="navbar-droite"></div>
-        <button class="button-à-propos">À propos</button>
-        <p class="point-entre-à-propos-liens">-·-</p>
-        <button class="button-liens">Liens diverses</button>
+        <button
+            class="menu-burger"
+            type="button"
+            aria-controls="navigation-principale"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu"
+        >
+            <span class="menu-burger-icone" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+        <nav id="navigation-principale" class="navigation-principale" aria-label="Navigation principale">
+            <button class="button-mes-projets" type="button">Mes projets</button>
+            <p class="point-entre-projets-langages">-·-</p>
+            <button class="button-langages" type="button">Langages</button>
+            <button class="button-à-propos" type="button">À propos</button>
+            <p class="point-entre-à-propos-liens">-·-</p>
+            <button class="button-liens" type="button">Liens diverses</button>
+        </nav>
+        <img class="logo" src="favicon.png">
         <div class="salut-binou30">
             <span class="salut">Salut, moi c'est </span>
             <span class="typewritter-Binou30"><b>Binou30!</b></span>

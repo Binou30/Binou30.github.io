@@ -1,35 +1,10 @@
-/* =========================================================
-   Version RESPONSIVE — calibrée sur une page de référence 1292 x 898
-   Principe : chaque valeur horizontale (largeurs, positions, espacements
-   gauche/droite, bordures, arrondis, ombres) est exprimée en vw ; chaque
-   valeur verticale (hauteurs, positions, espacements haut/bas) en vh.
-   Pas de clamp() : proportionnalité stricte, tout suit linéairement la
-   largeur et/ou la hauteur de l'écran.
-
-   CORRECTIFS (3e passe) :
-   - Logo légèrement agrandi : 24.46vmin -> 27vmin.
-   - Ancrage vertical unique : --logo-center = centre vertical exact du
-     logo (top du logo + demi-hauteur du logo). Navbars, boutons et
-     séparateurs "-.-" utilisent tous ce même repère avec
-     transform: translateY(-50%) (ou translate(-50%,-50%) pour les
-     séparateurs, déjà centrés horizontalement). Comme translateY(-50%)
-     se base sur la propre hauteur de l'élément, le centrage vertical
-     reste EXACT quelle que soit la taille de police/du bouton/de la
-     navbar — plus aucun décalage possible quand la largeur seule change.
-   - Hauteur des navbars passée de 9vh à 9vmin : sur un écran peu large
-     (largeur < hauteur), vmin suit la largeur, donc la navbar réduit
-     aussi sa hauteur quand l'écran devient étroit, tout en restant
-     alignée sur le centre du logo grâce à --logo-center.
-   - Séparateurs : police recalée à 1.935vw, top passé sur --logo-center.
-   ========================================================= */
-
 :root {
-    /* top du logo (1vh) + demi-hauteur du logo (27vmin / 2 = 13.5vmin) */
     --logo-center: calc(1vh + 13.5vmin);
 }
 
 .navbar-gauche {
     position: fixed;
+    pointer-events: none;
     width: 35%;
     height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
@@ -118,6 +93,7 @@
 
 .navbar-droite {
     position: fixed;
+    pointer-events: none;
     width: 35%;
     height: 9vmin;
     background-color: rgba(190, 179, 218, 0.3);
@@ -317,5 +293,350 @@ body {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+:root {
+    --logo-top: clamp(0.375rem, 1vh, 1.25rem);
+    --logo-size: clamp(10rem, 27vmin, 18.75rem);
+    --logo-half-size: clamp(5rem, 13.5vmin, 9.375rem);
+    --logo-center: calc(var(--logo-top) + var(--logo-half-size));
+    --navbar-height: clamp(3.375rem, 9vmin, 6rem);
+    --button-font-size: clamp(0.75rem, 1vw, 1rem);
+    --button-padding-y: clamp(0.625rem, 1.5vh, 0.875rem);
+    --button-padding-x: clamp(1.125rem, 2vw, 2rem);
+    --button-radius: clamp(0.625rem, 0.929vw, 1rem);
+    --separator-font-size: clamp(1.125rem, 1.935vw, 1.75rem);
+    --greeting-font-size: clamp(1.25rem, 2vw, 2rem);
+    --line-height: clamp(0.125rem, 0.223vh, 0.1875rem);
+    --border-size: clamp(0.5px, 0.077vw, 1.5px);
+}
+
+.navbar-gauche,
+.navbar-droite {
+    height: var(--navbar-height);
+    border-width: var(--border-size);
+    border-radius: clamp(0.75rem, 1.161vw, 1.25rem);
+}
+
+.button-mes-projets,
+.button-langages,
+.button-à-propos,
+.button-liens {
+    border-width: var(--border-size);
+    font-size: var(--button-font-size);
+    padding: var(--button-padding-y) var(--button-padding-x);
+    border-radius: var(--button-radius);
+}
+
+.button-mes-projets:hover,
+.button-langages:hover,
+.button-à-propos:hover,
+.button-liens:hover {
+    transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
+}
+
+.point-entre-projets-langages,
+.point-entre-à-propos-liens {
+    height: var(--navbar-height);
+    font-size: var(--separator-font-size);
+}
+
+.logo {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    top: var(--logo-top);
+    filter: drop-shadow(0 0 clamp(0.5rem, 0.774vw, 1rem) rgba(245, 238, 234, 0.4));
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 clamp(0.75rem, 1.161vw, 1.5rem) rgba(245, 238, 234, 0.6));
+}
+
+.logo:active {
+    filter: drop-shadow(0 0 clamp(1rem, 1.548vw, 2rem) #CCB1AB);
+}
+
+.salut-binou30 {
+    font-size: var(--greeting-font-size);
+}
+
+.typewritter-Binou30 {
+    border-right-width: clamp(0.125rem, 0.232vw, 0.25rem);
+}
+
+.bottom-binou30 {
+    height: var(--line-height);
+}
+
+.menu-burger {
+    display: none;
+}
+
+body {
+    overflow-x: visible;
+}
+
+@media (max-width: 68.75rem), (max-height: 42.5rem) {
+    html {
+        min-height: 100%;
+        background-color: #23243C;
+    }
+
+    body {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "logo logo"
+            "projects languages"
+            "about links"
+            "greeting greeting"
+            "line line";
+        align-content: start;
+        min-height: 100svh;
+        margin: 0;
+        padding: 1rem;
+        padding:
+            max(1rem, env(safe-area-inset-top))
+            max(1rem, env(safe-area-inset-right))
+            max(1rem, env(safe-area-inset-bottom))
+            max(1rem, env(safe-area-inset-left));
+        gap: clamp(0.75rem, 2.5vw, 1.25rem);
+        overflow-x: visible;
+    }
+
+    body > *,
+    .navigation-principale > * {
+        box-sizing: border-box;
+    }
+
+    .navigation-principale {
+        display: contents;
+    }
+
+    .navbar-gauche,
+    .navbar-droite,
+    .point-entre-projets-langages,
+    .point-entre-à-propos-liens {
+        display: none;
+    }
+
+    .logo {
+        position: static;
+        grid-area: logo;
+        justify-self: center;
+        width: clamp(6rem, 20vmin, 10rem);
+        height: clamp(6rem, 20vmin, 10rem);
+        margin: 0;
+        transform: none;
+        filter: drop-shadow(0 0 clamp(0.5rem, 1.5vw, 0.875rem) rgba(245, 238, 234, 0.4));
+    }
+
+    .logo:hover {
+        filter: drop-shadow(0 0 clamp(0.75rem, 2vw, 1rem) rgba(245, 238, 234, 0.6));
+    }
+
+    .logo:active {
+        transform: scale(0.97);
+    }
+
+    .button-mes-projets,
+    .button-langages,
+    .button-à-propos,
+    .button-liens {
+        position: static;
+        inset: auto;
+        width: 100%;
+        min-width: 0;
+        min-height: 2.75rem;
+        padding: clamp(0.625rem, 2vw, 0.875rem) clamp(0.75rem, 2.5vw, 1.25rem);
+        font-size: clamp(0.875rem, 2.1vw, 1rem);
+        line-height: 1.2;
+        transform: none;
+    }
+
+    .button-mes-projets {
+        grid-area: projects;
+    }
+
+    .button-langages {
+        grid-area: languages;
+    }
+
+    .button-à-propos {
+        grid-area: about;
+    }
+
+    .button-liens {
+        grid-area: links;
+    }
+
+    .button-mes-projets:hover,
+    .button-langages:hover,
+    .button-à-propos:hover,
+    .button-liens:hover {
+        transform: translateY(-0.125rem);
+    }
+
+    .button-mes-projets:active,
+    .button-langages:active,
+    .button-à-propos:active,
+    .button-liens:active {
+        transform: scale(0.98);
+    }
+
+    .salut-binou30 {
+        position: static;
+        grid-area: greeting;
+        justify-self: center;
+        width: min(100%, 42rem);
+        margin: 0;
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        line-height: 1.35;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        transform: none;
+    }
+
+    .salut {
+        display: inline;
+    }
+
+    .typewritter-Binou30 {
+        max-width: 100%;
+        vertical-align: -0.30em;
+        border-right-width: clamp(0.125rem, 0.5vw, 0.1875rem);
+    }
+
+    .bottom-binou30 {
+        position: static;
+        grid-area: line;
+        justify-self: center;
+        width: min(100%, 42rem);
+        height: 0.125rem;
+        margin: 0;
+        transform: translateX(0) scaleX(0);
+    }
+
+    @keyframes tracerLigne {
+        0% {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+        100% {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 26.25rem) {
+    body {
+        position: relative;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "logo"
+            "greeting"
+            "line";
+    }
+
+    .menu-burger {
+        position: absolute;
+        z-index: 1;
+        top: max(1rem, env(safe-area-inset-top));
+        right: max(1rem, env(safe-area-inset-right));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+        color: #F5EEEA;
+        background: rgba(40, 38, 85, 0.55);
+        border: var(--border-size) solid rgba(245, 238, 234, 0.2);
+        border-radius: var(--button-radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-burger:hover {
+        background-color: rgba(92, 86, 155, 0.65);
+        border-color: rgba(245, 238, 234, 0.35);
+        transform: translateY(-0.125rem);
+    }
+
+    .menu-burger:active {
+        background-color: rgba(198, 183, 215, 0.35);
+        transform: scale(0.95);
+    }
+
+    .menu-burger:focus-visible {
+        outline: 0.1875rem solid #CCB1AB;
+        outline-offset: 0.1875rem;
+    }
+
+    .menu-burger-icone {
+        display: grid;
+        gap: 0.25rem;
+        width: 1.375rem;
+    }
+
+    .menu-burger-icone span {
+        display: block;
+        width: 100%;
+        height: 0.125rem;
+        background-color: currentColor;
+        border-radius: 999px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    body.menu-ouvert .menu-burger-icone span:nth-child(1) {
+        transform: translateY(0.375rem) rotate(45deg);
+    }
+
+    body.menu-ouvert .menu-burger-icone span:nth-child(2) {
+        opacity: 0;
+    }
+
+    body.menu-ouvert .menu-burger-icone span:nth-child(3) {
+        transform: translateY(-0.375rem) rotate(-45deg);
+    }
+
+    .navigation-principale .button-mes-projets,
+    .navigation-principale .button-langages,
+    .navigation-principale .button-à-propos,
+    .navigation-principale .button-liens {
+        display: none;
+    }
+
+    body.menu-ouvert {
+        grid-template-areas:
+            "logo"
+            "projects"
+            "languages"
+            "about"
+            "links"
+            "greeting"
+            "line";
+    }
+
+    body.menu-ouvert .navigation-principale .button-mes-projets,
+    body.menu-ouvert .navigation-principale .button-langages,
+    body.menu-ouvert .navigation-principale .button-à-propos,
+    body.menu-ouvert .navigation-principale .button-liens {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
