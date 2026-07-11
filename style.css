@@ -612,14 +612,14 @@ body {
     }
 
     body.menu-ouvert {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-areas:
-            "logo"
-            "projects"
-            "languages"
-            "about"
-            "links"
-            "greeting"
-            "line";
+            "logo logo"
+            "projects languages"
+            "about links"
+            "greeting greeting"
+            "line line";
+        gap: clamp(0.625rem, 2.5vw, 1rem);
     }
 
     body.menu-ouvert .navigation-principale .button-mes-projets,
