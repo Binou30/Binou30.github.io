@@ -1,4 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const boutonMesProjets = document.querySelector(".button-mes-projets");
+    const boutonLangages = document.querySelector(".button-langages");
+    const boutonAPropos = document.querySelector(".button-à-propos");
+    const boutonLiens = document.querySelector(".button-liens");
+    const logo = document.querySelector(".logo");
+
+    function animationTap(element) {
+        if (!element) return;
+
+        element.addEventListener("click", () => {
+            element.classList.remove("tap-active");
+
+            void element.offsetWidth;
+
+            element.classList.add("tap-active");
+
+            setTimeout(() => {
+                element.classList.remove("tap-active");
+            }, 150);
+        });
+    }
+
+    [
+        boutonMesProjets,
+        boutonLangages,
+        boutonAPropos,
+        boutonLiens,
+        logo
+    ].forEach(animationTap);
+
     const burger = document.querySelector(".menu-burger");
     const navigation = document.querySelector(".navigation-principale");
 

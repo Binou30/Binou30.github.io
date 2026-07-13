@@ -1,45 +1,77 @@
 :root {
-    --logo-center: calc(1vh + 13.5vmin);
+    --logo-top: clamp(0.375rem, 1vh, 1.25rem);
+    --logo-size: clamp(10rem, 27vmin, 18.75rem);
+    --logo-half-size: clamp(5rem, 13.5vmin, 9.375rem);
+    --logo-center: calc(var(--logo-top) + var(--logo-half-size));
+    --navbar-height: clamp(3.375rem, 9vmin, 6rem);
+    --button-font-size: clamp(0.75rem, 1vw, 1rem);
+    --button-padding-y: clamp(0.625rem, 1.5vh, 0.875rem);
+    --button-padding-x: clamp(1.125rem, 2vw, 2rem);
+    --button-radius: clamp(0.625rem, 0.929vw, 1rem);
+    --separator-font-size: clamp(1.125rem, 1.935vw, 1.75rem);
+    --greeting-font-size: clamp(1.25rem, 2vw, 2rem);
+    --line-height: clamp(0.125rem, 0.223vh, 0.1875rem);
+    --border-size: clamp(0.5px, 0.077vw, 1.5px);
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button-mes-projets,
+.button-langages,
+.button-à-propos,
+.button-liens,
+.menu-burger,
+.logo {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .navbar-gauche {
     position: fixed;
     pointer-events: none;
     width: 35%;
-    height: 9vmin;
+    height: var(--navbar-height);
     background-color: rgba(190, 179, 218, 0.3);
-    border: 0.077vw solid rgba(245, 238, 234, 0.1);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.1);
+    border-radius: clamp(0.75rem, 1.161vw, 1.25rem);
     top: var(--logo-center);
     transform: translate(-5%, -50%);
     left: 5%;
-    border-radius: 1.161vw;
 }
 
 .button-mes-projets {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 0.077vw solid rgba(245, 238, 234, 0.12);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: 1vw;
+    font-size: var(--button-font-size);
     font-weight: bold;
-    padding: 1.5vh 2vw;
+    padding: var(--button-padding-y) var(--button-padding-x);
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 0.929vw;
-    transition: all 0.3s ease;
+    border-radius: var(--button-radius);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     top: var(--logo-center);
     left: 6.2%;
     transform: translateY(-50%);
 }
 
-.button-mes-projets:hover {
-    color: #F5EEEA;
-    background-color: rgba(92, 86, 155, 0.65);
-    border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(calc(-50% - 0.111vh));
+@media (hover: hover) and (pointer: fine) {
+    .button-mes-projets:hover {
+        color: #F5EEEA;
+        background-color: rgba(92, 86, 155, 0.65);
+        border-color: rgba(245, 238, 234, 0.2);
+        transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
+    }
 }
 
-.button-mes-projets:active {
+.button-mes-projets:active,
+.button-mes-projets.tap-active {
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
     transform: translateY(-50%) scale(0.95);
@@ -50,9 +82,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 9vmin;
+    height: var(--navbar-height);
     font-family: monospace;
-    font-size: 1.935vw;
+    font-size: var(--separator-font-size);
     color: #afaaa7;
     top: calc(var(--logo-center) - 0.2vh);
     left: 20.75%;
@@ -64,28 +96,31 @@
 .button-langages {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 0.077vw solid rgba(245, 238, 234, 0.12);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: 1vw;
+    font-size: var(--button-font-size);
     font-weight: bold;
-    padding: 1.5vh 2vw;
+    padding: var(--button-padding-y) var(--button-padding-x);
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 0.929vw;
-    transition: all 0.3s ease;
+    border-radius: var(--button-radius);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     top: var(--logo-center);
     left: 24.8%;
     transform: translateY(-50%);
 }
 
-.button-langages:hover {
-    color: #F5EEEA;
-    background-color: rgba(92, 86, 155, 0.65);
-    border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(calc(-50% - 0.111vh));
+@media (hover: hover) and (pointer: fine) {
+    .button-langages:hover {
+        color: #F5EEEA;
+        background-color: rgba(92, 86, 155, 0.65);
+        border-color: rgba(245, 238, 234, 0.2);
+        transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
+    }
 }
 
-.button-langages:active {
+.button-langages:active,
+.button-langages.tap-active {
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
     transform: translateY(-50%) scale(0.95);
@@ -95,40 +130,43 @@
     position: fixed;
     pointer-events: none;
     width: 35%;
-    height: 9vmin;
+    height: var(--navbar-height);
     background-color: rgba(190, 179, 218, 0.3);
-    border: 0.077vw solid rgba(245, 238, 234, 0.1);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.1);
+    border-radius: clamp(0.75rem, 1.161vw, 1.25rem);
     top: var(--logo-center);
     transform: translate(-95%, -50%);
     left: 95%;
-    border-radius: 1.161vw;
 }
 
 .button-à-propos {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 0.077vw solid rgba(245, 238, 234, 0.12);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: 1vw;
+    font-size: var(--button-font-size);
     font-weight: bold;
-    padding: 1.5vh 2vw;
+    padding: var(--button-padding-y) var(--button-padding-x);
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 0.929vw;
-    transition: all 0.3s ease;
+    border-radius: var(--button-radius);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     top: var(--logo-center);
     left: 64.2%;
     transform: translateY(-50%);
 }
 
-.button-à-propos:hover {
-    color: #F5EEEA;
-    background-color: rgba(92, 86, 155, 0.65);
-    border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(calc(-50% - 0.111vh));
+@media (hover: hover) and (pointer: fine) {
+    .button-à-propos:hover {
+        color: #F5EEEA;
+        background-color: rgba(92, 86, 155, 0.65);
+        border-color: rgba(245, 238, 234, 0.2);
+        transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
+    }
 }
 
-.button-à-propos:active {
+.button-à-propos:active,
+.button-à-propos.tap-active {
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
     transform: translateY(-50%) scale(0.95);
@@ -139,9 +177,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 9vmin;
+    height: var(--navbar-height);
     font-family: monospace;
-    font-size: 1.935vw;
+    font-size: var(--separator-font-size);
     color: #afaaa7;
     top: calc(var(--logo-center) - 0.2vh);
     left: 77.5%;
@@ -153,28 +191,31 @@
 .button-liens {
     position: fixed;
     background: rgba(40, 38, 85, 0.35);
-    border: 0.077vw solid rgba(245, 238, 234, 0.12);
+    border: var(--border-size) solid rgba(245, 238, 234, 0.12);
     font-family: monospace;
-    font-size: 1vw;
+    font-size: var(--button-font-size);
     font-weight: bold;
-    padding: 1.5vh 2vw;
+    padding: var(--button-padding-y) var(--button-padding-x);
     cursor: pointer;
     color: #F5EEEA;
-    border-radius: 0.929vw;
-    transition: all 0.3s ease;
+    border-radius: var(--button-radius);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     top: var(--logo-center);
     left: 82%;
     transform: translateY(-50%);
 }
 
-.button-liens:hover {
-    color: #F5EEEA;
-    background-color: rgba(92, 86, 155, 0.65);
-    border-color: rgba(245, 238, 234, 0.2);
-    transform: translateY(calc(-50% - 0.111vh));
+@media (hover: hover) and (pointer: fine) {
+    .button-liens:hover {
+        color: #F5EEEA;
+        background-color: rgba(92, 86, 155, 0.65);
+        border-color: rgba(245, 238, 234, 0.2);
+        transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
+    }
 }
 
-.button-liens:active {
+.button-liens:active,
+.button-liens.tap-active {
     background-color: rgba(198, 183, 215, 0.35);
     border-color: rgba(198, 183, 215, 0.5);
     transform: translateY(-50%) scale(0.95);
@@ -182,23 +223,26 @@
 
 .logo {
     position: fixed;
-    width: 27vmin;
-    height: 27vmin;
-    top: 1vh;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    top: var(--logo-top);
     left: 50%;
     transform: translateX(-50%) scale(1);
     transform-origin: center center;
-    filter: drop-shadow(0 0 0.774vw rgba(245, 238, 234, 0.4));
+    filter: drop-shadow(0 0 clamp(0.5rem, 0.774vw, 1rem) rgba(245, 238, 234, 0.4));
     transition: filter 0.3s ease-in-out, transform 0.2s ease-out;
     cursor: pointer;
 }
 
-.logo:hover {
-    filter: drop-shadow(0 0 1.161vw rgba(245, 238, 234, 0.6));
+@media (hover: hover) and (pointer: fine) {
+    .logo:hover {
+        filter: drop-shadow(0 0 clamp(0.75rem, 1.161vw, 1.5rem) rgba(245, 238, 234, 0.6));
+    }
 }
 
-.logo:active {
-    filter: drop-shadow(0 0 1.548vw #CCB1AB);
+.logo:active,
+.logo.tap-active {
+    filter: drop-shadow(0 0 clamp(1rem, 1.548vw, 2rem) #CCB1AB);
     transform: translateX(-50%) scale(0.97);
 }
 
@@ -208,7 +252,7 @@
     top: 32.94vh;
     transform: translate(-50%, -50%);
     font-family: monospace;
-    font-size: 2vw;
+    font-size: var(--greeting-font-size);
     line-height: 1;
     white-space: nowrap;
 }
@@ -223,7 +267,7 @@
     vertical-align: bottom;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 0.232vw solid #F5EEEA;
+    border-right: clamp(0.125rem, 0.232vw, 0.25rem) solid #F5EEEA;
     color: #F5EEEA;
     animation:
         typing 2s steps(8) 1 forwards,
@@ -247,7 +291,7 @@
     top: 38vh;
     background-color: #CCB1AB;
     width: 90%;
-    height: 0.223vh;
+    height: var(--line-height);
     border: none;
     transform-origin: center;
     transform: translateX(-50%) scaleX(0);
@@ -282,7 +326,7 @@ body {
     );
     animation: fadeIn 1.2s ease-out forwards;
     opacity: 0;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 @keyframes fadeIn {
@@ -296,85 +340,8 @@ body {
     }
 }
 
-:root {
-    --logo-top: clamp(0.375rem, 1vh, 1.25rem);
-    --logo-size: clamp(10rem, 27vmin, 18.75rem);
-    --logo-half-size: clamp(5rem, 13.5vmin, 9.375rem);
-    --logo-center: calc(var(--logo-top) + var(--logo-half-size));
-    --navbar-height: clamp(3.375rem, 9vmin, 6rem);
-    --button-font-size: clamp(0.75rem, 1vw, 1rem);
-    --button-padding-y: clamp(0.625rem, 1.5vh, 0.875rem);
-    --button-padding-x: clamp(1.125rem, 2vw, 2rem);
-    --button-radius: clamp(0.625rem, 0.929vw, 1rem);
-    --separator-font-size: clamp(1.125rem, 1.935vw, 1.75rem);
-    --greeting-font-size: clamp(1.25rem, 2vw, 2rem);
-    --line-height: clamp(0.125rem, 0.223vh, 0.1875rem);
-    --border-size: clamp(0.5px, 0.077vw, 1.5px);
-}
-
-.navbar-gauche,
-.navbar-droite {
-    height: var(--navbar-height);
-    border-width: var(--border-size);
-    border-radius: clamp(0.75rem, 1.161vw, 1.25rem);
-}
-
-.button-mes-projets,
-.button-langages,
-.button-à-propos,
-.button-liens {
-    border-width: var(--border-size);
-    font-size: var(--button-font-size);
-    padding: var(--button-padding-y) var(--button-padding-x);
-    border-radius: var(--button-radius);
-}
-
-.button-mes-projets:hover,
-.button-langages:hover,
-.button-à-propos:hover,
-.button-liens:hover {
-    transform: translateY(calc(-50% - clamp(0.5px, 0.111vh, 2px)));
-}
-
-.point-entre-projets-langages,
-.point-entre-à-propos-liens {
-    height: var(--navbar-height);
-    font-size: var(--separator-font-size);
-}
-
-.logo {
-    width: var(--logo-size);
-    height: var(--logo-size);
-    top: var(--logo-top);
-    filter: drop-shadow(0 0 clamp(0.5rem, 0.774vw, 1rem) rgba(245, 238, 234, 0.4));
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 clamp(0.75rem, 1.161vw, 1.5rem) rgba(245, 238, 234, 0.6));
-}
-
-.logo:active {
-    filter: drop-shadow(0 0 clamp(1rem, 1.548vw, 2rem) #CCB1AB);
-}
-
-.salut-binou30 {
-    font-size: var(--greeting-font-size);
-}
-
-.typewritter-Binou30 {
-    border-right-width: clamp(0.125rem, 0.232vw, 0.25rem);
-}
-
-.bottom-binou30 {
-    height: var(--line-height);
-}
-
 .menu-burger {
     display: none;
-}
-
-body {
-    overflow-x: visible;
 }
 
 @media (max-width: 68.75rem), (max-height: 42.5rem) {
@@ -433,11 +400,15 @@ body {
         filter: drop-shadow(0 0 clamp(0.5rem, 1.5vw, 0.875rem) rgba(245, 238, 234, 0.4));
     }
 
-    .logo:hover {
-        filter: drop-shadow(0 0 clamp(0.75rem, 2vw, 1rem) rgba(245, 238, 234, 0.6));
+    @media (hover: hover) and (pointer: fine) {
+        .logo:hover {
+            filter: drop-shadow(0 0 clamp(0.75rem, 2vw, 1rem) rgba(245, 238, 234, 0.6));
+        }
     }
 
-    .logo:active {
+    .logo:active,
+    .logo.tap-active {
+        filter: drop-shadow(0 0 clamp(1rem, 1.548vw, 2rem) #CCB1AB);
         transform: scale(0.97);
     }
 
@@ -472,18 +443,24 @@ body {
         grid-area: links;
     }
 
-    .button-mes-projets:hover,
-    .button-langages:hover,
-    .button-à-propos:hover,
-    .button-liens:hover {
-        transform: translateY(-0.125rem);
+    @media (hover: hover) and (pointer: fine) {
+        .button-mes-projets:hover,
+        .button-langages:hover,
+        .button-à-propos:hover,
+        .button-liens:hover {
+            transform: translateY(-0.125rem);
+        }
     }
 
     .button-mes-projets:active,
+    .button-mes-projets.tap-active,
     .button-langages:active,
+    .button-langages.tap-active,
     .button-à-propos:active,
-    .button-liens:active {
-        transform: scale(0.98);
+    .button-à-propos.tap-active,
+    .button-liens:active,
+    .button-liens.tap-active {
+        transform: scale(0.95);
     }
 
     .salut-binou30 {
@@ -561,10 +538,12 @@ body {
         transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     }
 
-    .menu-burger:hover {
-        background-color: rgba(92, 86, 155, 0.65);
-        border-color: rgba(245, 238, 234, 0.35);
-        transform: translateY(-0.125rem);
+    @media (hover: hover) and (pointer: fine) {
+        .menu-burger:hover {
+            background-color: rgba(92, 86, 155, 0.65);
+            border-color: rgba(245, 238, 234, 0.35);
+            transform: translateY(-0.125rem);
+        }
     }
 
     .menu-burger:active {
