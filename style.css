@@ -326,7 +326,7 @@ body {
     );
     animation: fadeIn 1.2s ease-out forwards;
     opacity: 0;
-    overflow-x: visible;
+    overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -370,7 +370,7 @@ body {
             max(1rem, env(safe-area-inset-bottom))
             max(1rem, env(safe-area-inset-left));
         gap: clamp(0.75rem, 2.5vw, 1.25rem);
-        overflow-x: visible;
+        overflow-x: hidden;
     }
 
     body > *,
