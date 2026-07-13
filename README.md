@@ -3,4 +3,4 @@ Dans ce portfolio ,vous trouverez un peu toutes mes compétences en programmatio
 
 Bonne exploration!
 
-ATTENTION : ce site n'est pas terminé donc si vous voyez des problèmes d'affichage ou des bugs, c'est normal. Pour l'instant, il n'est pas responsive sur les petits écrans (téléphones, tablettes)!
+ATTENTION : ce site n'est pas terminé donc si vous voyez des problèmes d'affichage ou des bugs, c'est normal.
